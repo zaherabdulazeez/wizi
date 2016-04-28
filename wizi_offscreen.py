@@ -25,7 +25,7 @@ class VTKOffScreen(object):
 		writer = vtk.vtkPNGWriter()
 
 		windowToImageFilter.SetInput(self.RenderWindow)
-		windowToImageFilter.SetMagnification(3)
+		# windowToImageFilter.SetMagnification(3)
 		writer.SetFileName(file_name)
 		writer.SetInputConnection(windowToImageFilter.GetOutputPort())
 
@@ -58,10 +58,16 @@ class VTKCameraTrackBallInteractor(VTKOffScreen):
 
 	def rotate_x(self,angle):
 		self.camera.OrthogonalizeViewUp()
-		self.camera.Azimuth(angle)
+		self.camera.Azimuth(-angle)
 		self.dump_view("wizi.png")
 		
 	def rotate_y(self,angle):
 		self.camera.OrthogonalizeViewUp()
-		self.camera.Elevation(angle)
+		self.camera.Elevation(-angle)
+		self.dump_view("wizi.png")
+
+	def resize(self,x,y):
+		# to be fixed for opengl errors
+		self.RenderWindow.SetSize(x,y)
+		# self.RenderWindow.Render()
 		self.dump_view("wizi.png")
