@@ -30,7 +30,7 @@ import wizi
 # asseble the vtk pipeline till the renderwindow.
 # give the renderwindow to wizi's interactor
 
-iren = wizi.VTKCameraTrackBallInteractor(renderwindow)
+iren = wizi.VTKTrackBallCameraInteractor(renderwindow)
 server = wizi.WiziServer(iren)
 server.start() 
 ```
@@ -39,7 +39,7 @@ Open the visulization in the browser
 ##For Development
 
 1. Extend the functionality to Mayavi by writing modules. Practically - any 3D application's offscreen renderwindow and Camera can be used to write a module to extend wizi's functionality to the module. Look into wizi_offscreen.py.
-2. VTKCameraTrackBallInteractor is just one way of interacting with the offscreen renderwindow. More ways of interacting with renderwindow.
+2. VTKTrackBallCameraInteractor is just one way of interacting with the offscreen renderwindow. More ways of interacting with renderwindow.
 3. Implement "diff"-ing and compression for image delivery for faster and light-weight visualization 
 
 ##Branches 

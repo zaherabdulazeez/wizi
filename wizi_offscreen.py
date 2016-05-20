@@ -35,7 +35,7 @@ class VTKOffScreen(object):
 		self.image_count +=1
 
 	
-class VTKCameraTrackBallInteractor(VTKOffScreen):
+class VTKTrackBallCameraInteractor(VTKOffScreen):
 	"""wizi vtk track ball interactor class that interacts with the offscreen render window.
 	Instantiate this with a vtk render window
 	"""

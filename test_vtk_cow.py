@@ -125,6 +125,6 @@ def Cut(v):
 # renWin.Render()
 # iren.Start()
 
-iren = wizi.VTKCameraTrackBallInteractor(renWin)
+iren = wizi.VTKTrackBallCameraInteractor(renWin)
 server = wizi.WiziServer(iren)
 server.start()

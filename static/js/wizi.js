@@ -17,6 +17,7 @@ wizi.interact = function(container,websocket){
 	var Wwidth =container.offsetWidth; 
 	var Wheight = container.offsetHeight;
 	var angleFactor = {x:90/Wwidth, y:90/Wheight} //one unit delta.x results in angleFactor.x unit degree of azimuth change
+	var motionFactor = {x:2, y:1} //to control the speed of the interacttion
 	var azimuth,elevation;
 	var data;
 
@@ -60,8 +61,8 @@ wizi.interact = function(container,websocket){
 
 		//one unit delta.x results in angleFactor.x unit degree of azimuth change
 
-		azimuth = delta.x * angleFactor.x;
-		elevation = delta.y *angleFactor.y;
+		azimuth = delta.x * angleFactor.x * motionFactor.x;
+		elevation = delta.y *angleFactor.y * motionFactor.y;
 
 		if(Math.abs(azimuth)>5 || Math.abs(elevation)>5){
 			console.log("sending...");
@@ -148,7 +149,8 @@ wizi.interact = function(container,websocket){
 
 wizi.websocket = function(){
 
-	var host = 'ws://localhost:8000/ws';
+	var host = 'ws://' + window.location.host + '/ws';
+	//var host = 'ws://localhost:8000/ws';
 	var	websocket = new WebSocket(host);
 	console.log('WebSocket OK')
 	return websocket;
@@ -174,7 +176,6 @@ wizi.wsCommunication = function(websocket,canvas){
 wizi.handleIncomingMessage = function(msg){
 	base64data = msg.data;
 	ImageObj.src = base64data;
-	console.log(msg.data)
 	return;
 }
 

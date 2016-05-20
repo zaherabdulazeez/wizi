@@ -1,4 +1,4 @@
-import vtk
+import vtk 
 import wizi
 
 coneSource = vtk.vtkConeSource()
@@ -19,6 +19,6 @@ renderWindow = vtk.vtkRenderWindow()
 renderWindow.SetSize(1366,659)
 renderWindow.AddRenderer(renderer)
 
-iren = wizi.VTKCameraTrackBallInteractor(renderWindow)
+iren = wizi.VTKTrackBallCameraInteractor(renderWindow)
 server = wizi.WiziServer(iren)
 server.start()

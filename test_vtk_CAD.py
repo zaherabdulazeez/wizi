@@ -55,7 +55,7 @@ renWin.SetSize(1366,659)
 ren.ResetCamera()
 ren.GetActiveCamera().Zoom(1.5)
 
-iren = wizi.VTKCameraTrackBallInteractor(renWin)
+iren = wizi.VTKTrackBallCameraInteractor(renWin)
 server = wizi.WiziServer(iren)
 server.start()
 
